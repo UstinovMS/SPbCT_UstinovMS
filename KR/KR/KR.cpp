@@ -7,24 +7,24 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
 	setlocale(LC_ALL, "rus");
 	FILE *hw;
 	char L;
-	char filename[25];
+	/*char filename[25];
 	cout << "Введите название файла(вместе с .txt): ";
-	cin >> filename;
-	fopen_s(&hw, filename , "r");
-	cout << "Открытие файла: ";
+	cin >> filename;*/
+	fopen_s(&hw, argv[1] , "r");
+	printf("Открытие файла: ");
 	if (hw == NULL)
 	{
-		cout << "ошибка" << endl;
+		printf("ошибка\n");
 		return -1;
 	}
 	else
 		cout << " выполнено" << endl;
-	cout << "Содержание файла: ";
+	printf("Содержание файла: ");
 
 	while (1)
 	{
@@ -38,25 +38,25 @@ int main()
 			if (feof(hw) != 0)
 			{
 			
-				cout << "\nЧтение файла закончено!"<< endl;
+				printf("\nЧтение файла закончено!\n");
 				break;
 			}
 			else
 			{
 			
-				cout << "\nОшибка чтения из файла" << endl;
+				printf("\nОшибка чтения из файла\n");
 				break;
 			}
 		}
 	
-		cout << L;
+		printf(" %c", L);
 	}
 
-	cout << "Закрытие файла: ";
+	printf("Закрытие файла: ");
 	if (fclose(hw) == EOF)
-		cout << "ошибка" << endl;
+		printf("ошибка\n");
 	else
-		cout << "выполнено" << endl;
+		printf("выполнено\n");
 
 	system("pause");
 }
